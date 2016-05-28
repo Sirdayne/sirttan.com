@@ -570,6 +570,8 @@
                 ];
             
             
+            var aboutNum = 112*5;
+            var contactNum = 54*5;
             var serviceNum = table.length - 5;
             
 			var camera, scene, renderer;
@@ -630,7 +632,7 @@
                 
 				for ( var i = 0; i < table.length; i += 5 ) {
 
-                    if (i == 54*5) {
+                    if (i == contactNum) {
                         
                     var element = document.createElement( 'div' );
 					element.className = 'contact-element';
@@ -639,7 +641,7 @@
                       addElement();
                     }
                     
-                    else if (i == 112*5){   
+                    else if (i == aboutNum){   
                         
                     var element = document.createElement( 'div' );
 					element.className = 'about-element';
