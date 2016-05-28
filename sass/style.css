@@ -1,0 +1,105 @@
+/* line 6, D:/sirttan3d/sass/style.scss */
+html, body {
+  height: 100%; }
+
+/* line 10, D:/sirttan3d/sass/style.scss */
+body {
+  background-color: #000000;
+  margin: 0;
+  font-family: Helvetica, sans-serif;
+  overflow: hidden; }
+  /* line 17, D:/sirttan3d/sass/style.scss */
+  body a {
+    color: #ffffff; }
+  /* line 22, D:/sirttan3d/sass/style.scss */
+  body #info {
+    position: absolute;
+    width: 100%;
+    color: #ffffff;
+    padding: 5px;
+    font-family: Monospace;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1; }
+  /* line 34, D:/sirttan3d/sass/style.scss */
+  body #menu {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center; }
+
+/* line 42, D:/sirttan3d/sass/style.scss */
+.element, .service-element, .contact-element, .about-element {
+  width: 120px;
+  height: 160px;
+  box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.5);
+  border: 1px solid rgba(127, 255, 255, 0.25);
+  text-align: center;
+  cursor: default; }
+  /* line 50, D:/sirttan3d/sass/style.scss */
+  .element .number, .service-element .number, .contact-element .number, .about-element .number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 12px;
+    color: rgba(127, 255, 255, 0.75); }
+  /* line 58, D:/sirttan3d/sass/style.scss */
+  .element .details, .service-element .details, .contact-element .details, .about-element .details {
+    position: absolute;
+    bottom: 15px;
+    left: 0px;
+    right: 0px;
+    font-size: 12px;
+    color: rgba(127, 255, 255, 0.75); }
+  /* line 68, D:/sirttan3d/sass/style.scss */
+  .element .symbol, .service-element .symbol, .contact-element .symbol, .about-element .symbol {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    right: 0px;
+    font-size: 60px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.95); }
+  /* line 79, D:/sirttan3d/sass/style.scss */
+  .element:hover, .service-element:hover, .contact-element:hover, .about-element:hover {
+    box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
+    border: 1px solid rgba(127, 255, 255, 0.75); }
+
+/* line 86, D:/sirttan3d/sass/style.scss */
+.service-element, .contact-element, .about-element {
+  width: 600px;
+  height: 500px; }
+  /* line 92, D:/sirttan3d/sass/style.scss */
+  .service-element .details, .contact-element .details, .about-element .details {
+    font-size: 50px; }
+  /* line 95, D:/sirttan3d/sass/style.scss */
+  .service-element .symbol, .contact-element .symbol, .about-element .symbol {
+    font-size: 100px; }
+
+/* line 103, D:/sirttan3d/sass/style.scss */
+.contact-element .details {
+  top: 250px; }
+
+/* line 111, D:/sirttan3d/sass/style.scss */
+.about-element .details {
+  top: 200px; }
+
+/* line 116, D:/sirttan3d/sass/style.scss */
+button {
+  color: rgba(0, 115, 255, 0.75);
+  background: transparent;
+  outline: 1px solid rgba(0, 115, 255, 0.75);
+  border: 0px;
+  padding: 5px 10px;
+  cursor: pointer; }
+  /* line 123, D:/sirttan3d/sass/style.scss */
+  button:hover {
+    background-color: rgba(0, 115, 255, 0.5); }
+  /* line 126, D:/sirttan3d/sass/style.scss */
+  button:active {
+    color: #000000;
+    background-color: rgba(0, 115, 255, 0.75); }
+
+/*# sourceMappingURL=style.css.map */

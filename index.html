@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<title>SIRTTAN, создание веб-сайтов, разработка веб-приложений</title>
+        <meta name="description" content="Создание Лендинг, Сайт-визиток для бизнеса">
+		<meta name="keywords" content="sirttan, сырттан, создание, лендинг, landing, сайт" />
+        <meta name="author" content="Sirttan" />
+        <link rel="stylesheet" href="css/style.css">
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-78356536-2', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+
+	</head>
+	<body>
+		<script src="js/three.js"></script>
+		<script src="js/tween.min.js"></script>
+		<script src="js/TrackballControls.js"></script>
+		<script src="js/CSS3DRenderer.js"></script>
+		<script src="js/jquery-1.12.1.js"></script>
+
+		<div id="container"></div>
+		<!--<div id="info"><a href="http://sirttan.com" target="_blank">SIRTTAN.COM</a></div>-->
+		<div id="menu">
+			<button id="table">SIRTTAN</button>
+            <button id="grid">О НАС</button>
+			<button id="sphere">УСЛУГИ</button>
+			<button id="helix">КОНТАКТЫ</button>
+			
+			<!--<button id="column">КОЛОННА</button>
+			<button id="deck">КОЛОДА</button>
+			<button id="option">НАВЕДЕНИЕ</button>
+			<button id="pause">ПАУЗА</button>-->
+		</div>
+
+		<script>
+
+			var table = [
+				"S", "S", "1.00794", -3, 2,
+				"S", "S", "4.002602", -3, 3,
+				"S", "S", "6.941", -2, 2,
+				"S", "S", "9.012182", -1, 2,
+				"S", "S", "10.811", -3, 4,
+				"S", "S", "12.0107", -2, 4,
+				"S", "S", "14.0067", -1, 4,
+				"S", "S", "15.9994", -1, 5,
+				"S", "S", "18.9984032", -1, 6,
+				"S", "S", "20.1797", -2, 6,
+				"S", "S", "22.98976...", -3, 6,
+				"I", "I", "24.305", 1, 2,
+				"I", "I", "26.9815386", 1, 3,
+				"I", "I", "28.0855", 1, 4,
+				"I", "I", "30.973762", 1, 5,
+				"I", "I", "32.065", 1, 6,
+				"R", "R", "35.453", 3, 2,
+				"R", "R", "39.948", 3, 3,
+				"R", "R", "39.948", 3, 4,
+				"R", "R", "40.078", 3, 5,
+				"R", "R", "44.955912", 3, 6,
+				"R", "R", "47.867", 4, 2,
+				"R", "R", "50.9415", 5, 2,
+				"R", "R", "51.9961", 5, 3,
+				"R", "R", "54.938045", 4, 4,
+				"R", "R", "55.845", 5, 5,
+				"R", "R", "58.933195", 6, 6,
+				"T", "T", "58.6934", 7, 2,
+				"T", "T", "63.546", 8, 2,
+				"T", "T", "65.38", 9, 2,
+				"T", "T", "69.723", 8, 3,
+				"T", "T", "72.63", 8, 4,
+				"T", "T", "74.9216", 8, 5,
+				"T", "T", "78.96", 8, 6,
+				"T2", "T2", "79.904", 11, 2,
+				"T2", "T2", "83.798", 12, 2,
+				"T2", "T2", "85.4678", 13, 2,
+				"T2", "T2", "87.62", 12, 3,
+				"T2", "T2", "88.90585", 12, 4,
+				"T2", "T2", "91.224", 12, 5,
+				"T2", "T2", "92.90628", 12, 6,
+				"A", "A", "95.96", 15, 2,
+				"A", "A", "(98)", 16, 2,
+				"A", "A", "101.07", 17,2,
+				"A", "A", "102.9055", 15, 3,
+				"A", "A", "106.42", 17, 3,
+				"A", "A", "107.8682", 15, 4,
+				"A", "A", "112.411", 17, 4,
+				"A", "A", "114.818", 16, 4,
+				"A", "A", "118.71", 15, 5,
+				"A", "A", "121.76", 15, 6,
+				"A", "A", "127.6", 17, 5,
+				"A", "A", "126.90447", 17, 6,
+				"N", "N", "131.293", 19, 2,
+				"КОНТАКТЫ", "ЗВОНИТЕ +77777700529", "", 500, 500,
+				"N", "N", "132.9054", 19, 4,
+				"N", "N", "138.90547", 19, 5,
+				"N", "N", "140.116", 19, 6,
+				"N", "N", "140.90765", 20, 4,
+				"N", "N", "144.242", 22, 2,
+				"N", "N", "(145)", 22, 3,
+				"N", "N", "150.36", 22, 4,
+				"N", "N", "151.964", 22, 5,
+				"N", "N", "157.25", 22, 6,
+				"N", "N", "158.92535", 21, 5,
+                "S", "S", "1.00794", -3, 2,
+				"S", "S", "4.002602", -3, 3,
+				"S", "S", "6.941", -2, 2,
+				"S", "S", "9.012182", -1, 2,
+				"S", "S", "10.811", -3, 4,
+				"S", "S", "12.0107", -2, 4,
+				"S", "S", "14.0067", -1, 4,
+				"S", "S", "15.9994", -1, 5,
+				"S", "S", "18.9984032", -1, 6,
+				"S", "S", "20.1797", -2, 6,
+				"S", "S", "22.98976...", -3, 6,
+				"I", "I", "24.305", 1, 2,
+				"I", "I", "26.9815386", 1, 3,
+				"I", "I", "28.0855", 1, 4,
+				"I", "I", "30.973762", 1, 5,
+				"I", "I", "32.065", 1, 6,
+				"R", "R", "35.453", 3, 2,
+				"R", "R", "39.948", 3, 3,
+				"R", "R", "39.948", 3, 4,
+				"R", "R", "40.078", 3, 5,
+				"R", "R", "44.955912", 3, 6,
+				"R", "R", "47.867", 4, 2,
+				"R", "R", "50.9415", 5, 2,
+				"R", "R", "51.9961", 5, 3,
+				"R", "R", "54.938045", 4, 4,
+				"R", "R", "55.845", 5, 5,
+				"R", "R", "58.933195", 6, 6,
+				"T", "T", "58.6934", 7, 2,
+				"T", "T", "63.546", 8, 2,
+				"T", "T", "65.38", 9, 2,
+				"T", "T", "69.723", 8, 3,
+				"T", "T", "72.63", 8, 4,
+				"T", "T", "74.9216", 8, 5,
+				"T", "T", "78.96", 8, 6,
+				"T2", "T2", "79.904", 11, 2,
+				"T2", "T2", "83.798", 12, 2,
+				"T2", "T2", "85.4678", 13, 2,
+				"T2", "T2", "87.62", 12, 3,
+				"T2", "T2", "88.90585", 12, 4,
+				"T2", "T2", "91.224", 12, 5,
+				"T2", "T2", "92.90628", 12, 6,
+				"A", "A", "95.96", 15, 2,
+				"A", "A", "(98)", 16, 2,
+				"A", "A", "101.07", 17,2,
+				"A", "A", "102.9055", 15, 3,
+				"A", "A", "106.42", 17, 3,
+				"A", "A", "107.8682", 15, 4,
+				"О НАС", "Компания Sirttan занимается веб-разработкой. Cозданием сайтов любой сложности.", "", 500, 500,
+				"A", "A", "114.818", 16, 4,
+				"A", "A", "118.71", 15, 5,
+				"A", "A", "121.76", 15, 6,
+				"A", "A", "127.6", 17, 5,
+				"A", "A", "126.90447", 17, 6,
+				"N", "N", "131.293", 19, 2,
+				"N", "N", "132.9054", 19, 3,
+				"N", "N", "132.9054", 19, 4,
+				"N", "N", "138.90547", 19, 5,
+				"N", "N", "140.116", 19, 6,
+				"N", "N", "140.90765", 20, 4,
+				"N", "N", "144.242", 22, 2,
+				"N", "N", "(145)", 22, 3,
+				"N", "N", "150.36", 22, 4,
+				"N", "N", "151.964", 22, 5,
+				"N", "N", "157.25", 22, 6,
+				"N", "N", "158.92535", 21, 5,
+                "S", "S", "1.00794", -3, 2,
+				"S", "S", "4.002602", -3, 3,
+				"S", "S", "6.941", -2, 2,
+				"S", "S", "9.012182", -1, 2,
+				"S", "S", "10.811", -3, 4,
+				"S", "S", "12.0107", -2, 4,
+				"S", "S", "14.0067", -1, 4,
+				"S", "S", "15.9994", -1, 5,
+				"S", "S", "18.9984032", -1, 6,
+				"S", "S", "20.1797", -2, 6,
+				"S", "S", "22.98976...", -3, 6,
+				"I", "I", "24.305", 1, 2,
+				"I", "I", "26.9815386", 1, 3,
+				"I", "I", "28.0855", 1, 4,
+				"I", "I", "30.973762", 1, 5,
+				"I", "I", "32.065", 1, 6,
+				"R", "R", "35.453", 3, 2,
+				"R", "R", "39.948", 3, 3,
+				"R", "R", "39.948", 3, 4,
+				"R", "R", "40.078", 3, 5,
+				"R", "R", "44.955912", 3, 6,
+				"R", "R", "47.867", 4, 2,
+				"R", "R", "50.9415", 5, 2,
+				"R", "R", "51.9961", 5, 3,
+				"R", "R", "54.938045", 4, 4,
+				"R", "R", "55.845", 5, 5,
+				"R", "R", "58.933195", 6, 6,
+				"T", "T", "58.6934", 7, 2,
+				"T", "T", "63.546", 8, 2,
+				"T", "T", "65.38", 9, 2,
+				"T", "T", "69.723", 8, 3,
+				"T", "T", "72.63", 8, 4,
+				"T", "T", "74.9216", 8, 5,
+				"T", "T", "78.96", 8, 6,
+				"T2", "T2", "79.904", 11, 2,
+				"T2", "T2", "83.798", 12, 2,
+				"T2", "T2", "85.4678", 13, 2,
+				"T2", "T2", "87.62", 12, 3,
+				"T2", "T2", "88.90585", 12, 4,
+				"T2", "T2", "91.224", 12, 5,
+				"T2", "T2", "92.90628", 12, 6,
+				"A", "A", "95.96", 15, 2,
+				"A", "A", "(98)", 16, 2,
+				"A", "A", "101.07", 17,2,
+				"A", "A", "102.9055", 15, 3,
+				"A", "A", "106.42", 17, 3,
+				"A", "A", "107.8682", 15, 4,
+				"A", "A", "112.411", 17, 4,
+				"A", "A", "114.818", 16, 4,
+				"A", "A", "118.71", 15, 5,
+				"A", "A", "121.76", 15, 6,
+				"A", "A", "127.6", 17, 5,
+				"A", "A", "126.90447", 17, 6,
+				"N", "N", "131.293", 19, 2,
+				"N", "N", "132.9054", 19, 3,
+				"N", "N", "132.9054", 19, 4,
+				"N", "N", "138.90547", 19, 5,
+				"N", "N", "140.116", 19, 6,
+				"N", "N", "140.90765", 20, 4,
+				"N", "N", "144.242", 22, 2,
+				"N", "N", "(145)", 22, 3,
+				"N", "N", "150.36", 22, 4,
+				"N", "N", "151.964", 22, 5,
+				"N", "N", "157.25", 22, 6,
+				"N", "N", "158.92535", 21, 5,
+                "S", "S", "1.00794", -3, 2,
+				"S", "S", "4.002602", -3, 3,
+				"S", "S", "6.941", -2, 2,
+				"S", "S", "9.012182", -1, 2,
+				"S", "S", "10.811", -3, 4,
+				"S", "S", "12.0107", -2, 4,
+				"S", "S", "14.0067", -1, 4,
+				"S", "S", "15.9994", -1, 5,
+				"S", "S", "18.9984032", -1, 6,
+				"S", "S", "20.1797", -2, 6,
+				"S", "S", "22.98976...", -3, 6,
+				"I", "I", "24.305", 1, 2,
+				"I", "I", "26.9815386", 1, 3,
+				"I", "I", "28.0855", 1, 4,
+				"I", "I", "30.973762", 1, 5,
+				"I", "I", "32.065", 1, 6,
+				"R", "R", "35.453", 3, 2,
+				"R", "R", "39.948", 3, 3,
+				"R", "R", "39.948", 3, 4,
+				"R", "R", "40.078", 3, 5,
+				"R", "R", "44.955912", 3, 6,
+				"R", "R", "47.867", 4, 2,
+				"R", "R", "50.9415", 5, 2,
+				"R", "R", "51.9961", 5, 3,
+				"R", "R", "54.938045", 4, 4,
+				"R", "R", "55.845", 5, 5,
+				"R", "R", "58.933195", 6, 6,
+				"T", "T", "58.6934", 7, 2,
+				"T", "T", "63.546", 8, 2,
+				"T", "T", "65.38", 9, 2,
+				"T", "T", "69.723", 8, 3,
+				"T", "T", "72.63", 8, 4,
+				"T", "T", "74.9216", 8, 5,
+				"T", "T", "78.96", 8, 6,
+				"T2", "T2", "79.904", 11, 2,
+				"T2", "T2", "83.798", 12, 2,
+				"T2", "T2", "85.4678", 13, 2,
+				"T2", "T2", "87.62", 12, 3,
+				"T2", "T2", "88.90585", 12, 4,
+				"T2", "T2", "91.224", 12, 5,
+				"T2", "T2", "92.90628", 12, 6,
+				"A", "A", "95.96", 15, 2,
+				"A", "A", "(98)", 16, 2,
+				"A", "A", "101.07", 17,2,
+				"A", "A", "102.9055", 15, 3,
+				"A", "A", "106.42", 17, 3,
+				"A", "A", "107.8682", 15, 4,
+				"A", "A", "112.411", 17, 4,
+				"A", "A", "114.818", 16, 4,
+				"A", "A", "118.71", 15, 5,
+				"A", "A", "121.76", 15, 6,
+				"A", "A", "127.6", 17, 5,
+				"A", "A", "126.90447", 17, 6,
+				"N", "N", "131.293", 19, 2,
+				"N", "N", "132.9054", 19, 3,
+				"N", "N", "132.9054", 19, 4,
+				"N", "N", "138.90547", 19, 5,
+				"N", "N", "140.116", 19, 6,
+				"N", "N", "140.90765", 20, 4,
+				"N", "N", "144.242", 22, 2,
+				"N", "N", "(145)", 22, 3,
+				"N", "N", "150.36", 22, 4,
+				"N", "N", "151.964", 22, 5,
+				"N", "N", "157.25", 22, 6,
+				"N", "N", "158.92535", 21, 5,
+                "S", "S", "1.00794", -3, 2,
+				"S", "S", "4.002602", -3, 3,
+				"S", "S", "6.941", -2, 2,
+				"S", "S", "9.012182", -1, 2,
+				"S", "S", "10.811", -3, 4,
+				"S", "S", "12.0107", -2, 4,
+				"S", "S", "14.0067", -1, 4,
+				"S", "S", "15.9994", -1, 5,
+				"S", "S", "18.9984032", -1, 6,
+				"S", "S", "20.1797", -2, 6,
+				"S", "S", "22.98976...", -3, 6,
+				"I", "I", "24.305", 1, 2,
+				"I", "I", "26.9815386", 1, 3,
+				"I", "I", "28.0855", 1, 4,
+				"I", "I", "30.973762", 1, 5,
+				"I", "I", "32.065", 1, 6,
+				"R", "R", "35.453", 3, 2,
+				"R", "R", "39.948", 3, 3,
+				"R", "R", "39.948", 3, 4,
+				"R", "R", "40.078", 3, 5,
+				"R", "R", "44.955912", 3, 6,
+				"R", "R", "47.867", 4, 2,
+				"R", "R", "50.9415", 5, 2,
+				"R", "R", "51.9961", 5, 3,
+				"R", "R", "54.938045", 4, 4,
+				"R", "R", "55.845", 5, 5,
+				"R", "R", "58.933195", 6, 6,
+				"T", "T", "58.6934", 7, 2,
+				"T", "T", "63.546", 8, 2,
+				"T", "T", "65.38", 9, 2,
+				"T", "T", "69.723", 8, 3,
+				"T", "T", "72.63", 8, 4,
+				"T", "T", "74.9216", 8, 5,
+				"T", "T", "78.96", 8, 6,
+				"T2", "T2", "79.904", 11, 2,
+				"T2", "T2", "83.798", 12, 2,
+				"T2", "T2", "85.4678", 13, 2,
+				"T2", "T2", "87.62", 12, 3,
+				"T2", "T2", "88.90585", 12, 4,
+				"T2", "T2", "91.224", 12, 5,
+				"T2", "T2", "92.90628", 12, 6,
+				"A", "A", "95.96", 15, 2,
+				"A", "A", "(98)", 16, 2,
+				"A", "A", "101.07", 17,2,
+				"A", "A", "102.9055", 15, 3,
+				"A", "A", "106.42", 17, 3,
+				"A", "A", "107.8682", 15, 4,
+				"A", "A", "112.411", 17, 4,
+				"A", "A", "114.818", 16, 4,
+				"A", "A", "118.71", 15, 5,
+				"A", "A", "121.76", 15, 6,
+				"A", "A", "127.6", 17, 5,
+				"A", "A", "126.90447", 17, 6,
+				"N", "N", "131.293", 19, 2,
+				"N", "N", "132.9054", 19, 3,
+				"N", "N", "132.9054", 19, 4,
+				"N", "N", "138.90547", 19, 5,
+				"N", "N", "140.116", 19, 6,
+				"N", "N", "140.90765", 20, 4,
+				"N", "N", "144.242", 22, 2,
+				"N", "N", "(145)", 22, 3,
+				"N", "N", "150.36", 22, 4,
+				"N", "N", "151.964", 22, 5,
+				"N", "N", "157.25", 22, 6,
+				"N", "N", "158.92535", 21, 5,
+                "УСЛУГИ:", "УНИКАЛЬНЫЙ АДАПТИВНЫЙ ДИЗАЙН АНИМАЦИИ", "ДОМЕН+ХОСТИНГ 120.000тнг или 3D Сайт от 200.000тнг", 500, 500
+                
+             /*   "1 1", "S", "1.00794", -3, 2,
+				"1 2", "S", "4.002602", -3, 3,
+				"2 1", "S", "6.941", -2, 2,
+				"3 1", "S", "9.012182", -1, 2,
+				"1 3", "S", "10.811", -3, 4,
+				"2 3", "S", "12.0107", -2, 4,
+				"3 3", "S", "14.0067", -1, 4,
+				"3 4", "S", "15.9994", -1, 5,
+				"3 5", "S", "18.9984032", -1, 6,
+				"2 5", "S", "20.1797", -2, 6,
+				"1 5", "S", "22.98976...", -3, 6,
+				"5 1", "I", "24.305", 1, 2,
+				"5 2", "I", "26.9815386", 1, 3,
+				"5 3", "I", "28.0855", 1, 4,
+				"5 4", "I", "30.973762", 1, 5,
+				"5 5", "I", "32.065", 1, 6,
+				"7 1", "R", "35.453", 3, 2,
+				"7 2", "R", "39.948", 3, 3,
+				"7 3", "R", "39.948", 3, 4,
+				"7 4", "R", "40.078", 3, 5,
+				"7 5", "R", "44.955912", 3, 6,
+				"8 1", "R", "47.867", 4, 2,
+				"9 1", "R", "50.9415", 5, 2,
+				"9 2", "R", "51.9961", 5, 3,
+				"8 3", "R", "54.938045", 4, 4,
+				"9 4", "R", "55.845", 5, 5,
+				"10 5", "R", "58.933195", 6, 6,
+				"11 1", "T", "58.6934", 7, 2,
+				"12 1", "T", "63.546", 8, 2,
+				"13 1", "T", "65.38", 9, 2,
+				"12 2", "T", "69.723", 8, 3,
+				"12 3", "T", "72.63", 8, 4,
+				"12 4", "T", "74.9216", 8, 5,
+				"12 5", "T", "78.96", 8, 6,
+				"15 1", "T2", "79.904", 11, 2,
+				"16 1", "T2", "83.798", 12, 2,
+				"17 1", "T2", "85.4678", 13, 2,
+				"16 2", "T2", "87.62", 12, 3,
+				"16 3", "T2", "88.90585", 12, 4,
+				"16 4", "T2", "91.224", 12, 5,
+				"16 5", "T2", "92.90628", 12, 6,
+				"19 1", "A", "95.96", 15, 2,
+				"20 1", "A", "(98)", 16, 2,
+				"21 1", "A", "101.07", 17,2,
+				"19 2", "A", "102.9055", 15, 3,
+				"21 2", "A", "106.42", 17, 3,
+				"19 3", "A", "107.8682", 15, 4,
+				"21 3", "A", "112.411", 17, 4,
+				"20 3", "A", "114.818", 16, 4,
+				"19 4", "A", "118.71", 15, 5,
+				"19 5", "A", "121.76", 15, 6,
+				"21 4", "A", "127.6", 17, 5,
+				"21 5", "A", "126.90447", 17, 6,
+				"23 1", "N", "131.293", 19, 2,
+				"23 2", "N", "132.9054", 19, 3,
+				"23 3", "N", "132.9054", 19, 4,
+				"23 4", "N", "138.90547", 19, 5,
+				"23 5", "N", "140.116", 19, 6,
+				"24 3", "N", "140.90765", 20, 4,
+				"26 1", "N", "144.242", 22, 2,
+				"26 2", "N", "(145)", 22, 3,
+				"26 3", "N", "150.36", 22, 4,
+				"26 4", "N", "151.964", 22, 5,
+				"26 5", "N", "157.25", 22, 6,
+				"25 4", "N", "158.92535", 21, 5  */
+		/*		"Dy", "Dysprosium", "162.5", 143, 10,
+				"Ho", "Holmium", "164.93032", 144, 10,
+				"Er", "Erbium", "167.259", 145, 9,
+				"Tm", "Thulium", "168.93421", 146, 9,
+				"Yb", "Ytterbium", "173.054", 147, 9,
+				"Lu", "Lutetium", "174.9668", 148, 9,
+				"Hf", "Hafnium", "178.49",44, 6,
+				"Ta", "Tantalum", "180.94788", 45, 6,
+				"W", "Tungsten", "183.84", 64, 6,
+				"Re", "Rhenium", "186.207", 47, 6,
+				"Os", "Osmium", "190.23", 48, 6,
+				"Ir", "Iridium", "192.217", 94, 6,
+				"Pt", "Platinum", "195.084", 140, 6,
+				"Au", "Gold", "196.966569", 141, 6,
+				"Hg", "Mercury", "200.59", 142, 6,
+				"Tl", "Thallium", "204.3833", 143, 6,
+				"Pb", "Lead", "207.2", 144, 6,
+				"Bi", "Bismuth", "208.9804", 154, 6,
+				"Po", "Polonium", "(209)", 146, 6,
+				"At", "Astatine", "(210)", 147, 6,
+				"Rn", "Radon", "(222)", 418, 6,
+				"Fr", "Francium", "(223)", 414, 7,
+				"Ra", "Radium", "(226)", 42, 7,
+				"Ac", "Actinium", "(227)", 44, 10,
+				"Th", "Thorium", "232.03806", 54, 10,
+				"Pa", "Protactinium", "231.0588", 46, 10,
+				"U", "Uranium", "238.02891", 74, 10,
+				"Np", "Neptunium", "(237)", 48, 10,
+				"Pu", "Plutonium", "(244)", 94, 10,
+				"Am", "Americium", "(243)", 140, 10,
+				"Cm", "Curium", "(247)", 141, 10,
+				"Bk", "Berkelium", "(247)", 142, 10,
+				"Cf", "Californium", "(251)", 143, 10,
+				"Es", "Einstenium", "(252)", 144, 10,
+				"Fm", "Fermium", "(257)", 415, 10,
+				"Md", "Mendelevium", "(258)", 146, 10,
+				"No", "Nobelium", "(259)", 147, 10,
+				"Lr", "Lawrencium", "(262)", 184, 10,
+				"Rf", "Rutherfordium", "(267)", 44, 7,
+				"Db", "Dubnium", "(268)", 45, 7,
+				"Sg", "Seaborgium", "(271)", 46, 7,
+				"Bh", "Bohrium", "(272)", 47, 7,
+				"Hs", "Hassium", "(270)", 84, 7,
+				"Mt", "Meitnerium", "(276)", 94, 7,
+				"Ds", "Darmstadium", "(281)", 140, 7,
+				"Rg", "Roentgenium", "(280)", 141, 7,
+				"Cn", "Copernicium", "(285)", 142, 7,
+				"Uut", "Unutrium", "(284)", 143, 7,
+				"Fl", "Flerovium", "(289)", 144, 7,
+				"Uup", "Ununpentium", "(288)", 145, 7,
+				"Lv", "Livermorium", "(293)", 146, 7,
+				"Uus", "Ununseptium", "(294)", 147, 7,
+				"Uuo", "Ununoctium", "(294)", 148, 7 */
+			];
+            
+            
+			var letterS = [
+				"S", "S", "1.00794", -3, 2,
+				"S", "S", "4.002602", -3, 3,
+				"S", "S", "6.941", -2, 2,
+				"S", "S", "9.012182", -1, 2,
+				"S", "S", "10.811", -3, 4,
+				"S", "S", "12.0107", -2, 4,
+				"S", "S", "14.0067", -1, 4,
+				"S", "S", "15.9994", -1, 5,
+				"S", "S", "18.9984032", -1, 6,
+				"S", "S", "20.1797", -2, 6,
+				"S", "S", "22.98976...", -3, 6
+                ];
+            
+            var letterI = [
+				"I", "I", "24.305", 1, 2,
+				"I", "I", "26.9815386", 1, 3,
+				"I", "I", "28.0855", 1, 4,
+				"I", "I", "30.973762", 1, 5,
+				"I", "I", "32.065", 1, 6
+                ];
+            
+            var letterR = [    
+				"R", "R", "35.453", 3, 2,
+				"R", "R", "39.948", 3, 3,
+				"R", "R", "39.948", 3, 4,
+				"R", "R", "40.078", 3, 5,
+				"R", "R", "44.955912", 3, 6,
+				"R", "R", "47.867", 4, 2,
+				"R", "R", "50.9415", 5, 2,
+				"R", "R", "51.9961", 5, 3,
+				"R", "R", "54.938045", 4, 4,
+				"R", "R", "55.845", 5, 5,
+				"R", "R", "58.933195", 6, 6
+                ];
+                
+            var letterT = [    
+				"T", "T", "58.6934", 7, 2,
+				"T", "T", "63.546", 8, 2,
+				"T", "T", "65.38", 9, 2,
+				"T", "T", "69.723", 8, 3,
+				"T", "T", "72.63", 8, 4,
+				"T", "T", "74.9216", 8, 5,
+				"T", "T", "78.96", 8, 6
+                ];
+            
+            var letterA = [
+				"A", "A", "95.96", 15, 2,
+				"A", "A", "(98)", 16, 2,
+				"A", "A", "101.07", 17,2,
+				"A", "A", "102.9055", 15, 3,
+				"A", "A", "106.42", 17, 3,
+				"A", "A", "107.8682", 15, 4,
+				"A", "A", "112.411", 17, 4,
+				"A", "A", "114.818", 16, 4,
+				"A", "A", "118.71", 15, 5,
+				"A", "A", "121.76", 15, 6,
+				"A", "A", "127.6", 17, 5,
+                "A", "A", "126.90447", 17, 6
+                ];
+            
+            var letterN = [
+				"N", "N", "131.293", 19, 2,
+				"N", "N", "132.9054", 19, 3,
+				"N", "N", "132.9054", 19, 4,
+				"N", "N", "138.90547", 19, 5,
+				"N", "N", "140.116", 19, 6,
+				"N", "N", "140.90765", 20, 4,
+				"N", "N", "144.242", 22, 2,
+				"N", "N", "(145)", 22, 3,
+				"N", "N", "150.36", 22, 4,
+				"N", "N", "151.964", 22, 5,
+				"N", "N", "157.25", 22, 6,
+				"N", "N", "158.92535", 21, 5
+                ];
+            
+            
+            
+			var camera, scene, renderer;
+			var controls;
+
+			var objects = [];
+			var targets = { table: [], sphere: [], helix: [], grid: [] };
+
+			init();
+			animate();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+				camera.position.z = 3000;
+
+				scene = new THREE.Scene();
+
+				// table
+
+				for ( var i = 0; i < 54*5; i += 5 ) {
+
+					var element = document.createElement( 'div' );
+					element.className = 'element';
+					element.style.backgroundColor = 'rgba(0,15,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+
+					var number = document.createElement( 'div' );
+					number.className = 'number';
+					number.textContent = (i/5) + 1;
+					element.appendChild( number );
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol';
+					symbol.textContent = table[ i ];
+					element.appendChild( symbol );
+
+					var details = document.createElement( 'div' );
+					details.className = 'details';
+					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
+					element.appendChild( details );
+
+					var object = new THREE.CSS3DObject( element );
+					object.position.x = Math.random() * 4000 - 2000;
+					object.position.y = Math.random() * 4000 - 2000;
+					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
+					object.position.y = - ( table[ i + 4 ] * 180 ) + 800;
+                    object.position.z = 1;
+                    
+					targets.table.push( object );
+
+				}
+                
+                
+                
+                //55 КОНТАКТЫ
+                
+                 var k = 54*5;
+                
+                var element = document.createElement( 'div' );
+					element.className = 'contact-element';
+					element.style.backgroundColor = 'rgba(0,15,127,' + 1 + ')';
+
+					var number = document.createElement( 'div' );
+					number.className = 'number';
+					number.textContent = (k/5) + 1;
+					element.appendChild( number );
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol';
+					symbol.textContent = table[ k ];
+					element.appendChild( symbol );
+
+					var details = document.createElement( 'div' );
+					details.className = 'details';
+					details.innerHTML = table[ k + 1 ] + '<br>' + table[ k + 2 ] ;
+					element.appendChild( details );
+
+					var object = new THREE.CSS3DObject( element );
+					object.position.x = Math.random() * 4000 - 2000;
+					object.position.y = Math.random() * 4000 - 2000;
+					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = ( table[ k + 3 ] * 140 ) - 1330;
+					object.position.y = - ( table[ k + 4 ] * 180 ) + 800;
+                    object.position.z = 1;
+                    
+					targets.table.push( object );
+                
+                for ( var i = 55*5; i < 112*5; i += 5 ) {
+
+					var element = document.createElement( 'div' );
+					element.className = 'element';
+					element.style.backgroundColor = 'rgba(0,15,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+
+					var number = document.createElement( 'div' );
+					number.className = 'number';
+					number.textContent = (i/5) + 1;
+					element.appendChild( number );
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol';
+					symbol.textContent = table[ i ];
+					element.appendChild( symbol );
+
+					var details = document.createElement( 'div' );
+					details.className = 'details';
+					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
+					element.appendChild( details );
+
+					var object = new THREE.CSS3DObject( element );
+					object.position.x = Math.random() * 4000 - 2000;
+					object.position.y = Math.random() * 4000 - 2000;
+					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
+					object.position.y = - ( table[ i + 4 ] * 180 ) + 800;
+                    object.position.z = 1;
+                    
+					targets.table.push( object );
+
+				}
+                
+                //112 О НАС 
+                
+                 var k = 112*5;
+                
+                var element = document.createElement( 'div' );
+					element.className = 'about-element';
+					element.style.backgroundColor = 'rgba(0,15,127,' + 1 + ')';
+
+					var number = document.createElement( 'div' );
+					number.className = 'number';
+					number.textContent = (k/5) + 1;
+					element.appendChild( number );
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol';
+					symbol.textContent = table[ k ];
+					element.appendChild( symbol );
+
+					var details = document.createElement( 'div' );
+					details.className = 'details';
+					details.innerHTML = table[ k + 1 ] + '<br>' + table[ k + 2 ] ;
+					element.appendChild( details );
+
+					var object = new THREE.CSS3DObject( element );
+					object.position.x = Math.random() * 4000 - 2000;
+					object.position.y = Math.random() * 4000 - 2000;
+					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = ( table[ k + 3 ] * 140 ) - 1330;
+					object.position.y = - ( table[ k + 4 ] * 180 ) + 800;
+                    object.position.z = 1;
+                    
+					targets.table.push( object );
+               
+                 for ( var i = 113*5; i < table.length - 5; i += 5 ) {
+
+					var element = document.createElement( 'div' );
+					element.className = 'element';
+					element.style.backgroundColor = 'rgba(0,15,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+
+					var number = document.createElement( 'div' );
+					number.className = 'number';
+					number.textContent = (i/5) + 1;
+					element.appendChild( number );
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol';
+					symbol.textContent = table[ i ];
+					element.appendChild( symbol );
+
+					var details = document.createElement( 'div' );
+					details.className = 'details';
+					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
+					element.appendChild( details );
+
+					var object = new THREE.CSS3DObject( element );
+					object.position.x = Math.random() * 4000 - 2000;
+					object.position.y = Math.random() * 4000 - 2000;
+					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
+					object.position.y = - ( table[ i + 4 ] * 180 ) + 800;
+                    object.position.z = 1;
+                    
+					targets.table.push( object );
+
+				}
+                
+                // table.length - 5 УСЛУГИ
+                
+                for ( var i = table.length - 5; i < table.length; i += 5 ) {
+                    
+                var k = i;
+                
+                var element = document.createElement( 'div' );
+					element.className = 'service-element';
+					element.style.backgroundColor = 'rgba(0,15,127,' + 1 + ')';
+
+					var number = document.createElement( 'div' );
+					number.className = 'number';
+					number.textContent = (k/5) + 1;
+					element.appendChild( number );
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol';
+					symbol.textContent = table[ k ];
+					element.appendChild( symbol );
+
+					var details = document.createElement( 'div' );
+					details.className = 'details';
+					details.innerHTML = table[ k + 1 ] + '<br>' + table[ k + 2 ] ;
+					element.appendChild( details );
+
+					var object = new THREE.CSS3DObject( element );
+					object.position.x = Math.random() * 4000 - 2000;
+					object.position.y = Math.random() * 4000 - 2000;
+					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = ( table[ k + 3 ] * 140 ) - 1330;
+					object.position.y = - ( table[ k + 4 ] * 180 ) + 800;
+                    object.position.z = 1000;
+                    
+					targets.table.push( object );
+                
+                }
+				// sphere
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var phi = Math.acos( -1 + ( 2 * i ) / l );
+					var theta = Math.sqrt( l * Math.PI ) * phi;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 800 * Math.cos( theta ) * Math.sin( phi );
+					object.position.y = 800 * Math.sin( theta ) * Math.sin( phi );
+					object.position.z = 800 * Math.cos( phi ) + 500;
+
+					vector.copy( object.position ).multiplyScalar( 2 );
+
+					object.lookAt( vector );
+
+					targets.sphere.push( object );
+
+				}
+                
+                
+
+				// helix
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var phi = i * 0.175 + Math.PI;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 900 * Math.sin( 2*phi );  // БЫЛО phi HELIX FIRST
+					object.position.y = - ( i * 8 ) + 450;
+					object.position.z = 900 * Math.cos( phi );
+
+					vector.x = object.position.x * 2;
+					vector.y = object.position.y;
+					vector.z = object.position.z * 2;
+
+					object.lookAt( vector );
+
+					targets.helix.push( object );
+
+				}
+
+				// grid
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = new THREE.Object3D();
+
+					object.position.x = ( ( i % 5 ) * 400 ) - 800;
+					object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 ) + 800;
+					object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 1900;
+
+					targets.grid.push( object );
+
+				}
+
+                /*
+                	// column
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = new THREE.Object3D();
+
+					object.position.x = ( ( i % 2 ) * 400 ) - 200;
+					object.position.y = ( - ( Math.floor( i / 2 ) % 2 ) * 400 ) + 200;
+					object.position.z = ( Math.floor( i / 4 ) ) * 200 - 2000;
+
+					targets.column.push( object );
+
+				}
+				//
+                
+                   	// deck
+                
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = new THREE.Object3D();
+
+					object.position.x = i + 100;
+					object.position.y = i + 100;
+					object.position.z = i + 100;
+
+					targets.deck.push( object );
+
+				}
+                */
+				//
+
+				renderer = new THREE.CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.domElement.style.position = 'absolute';
+				document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+				//
+
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				controls.rotateSpeed = 0.5;
+				controls.minDistance = 500;
+				controls.maxDistance = 6000;
+				controls.addEventListener( 'change', render );
+
+				var button = document.getElementById( 'table' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.table, 2000 );
+
+				}, false );
+                
+
+				var button = document.getElementById( 'sphere' );
+				button.addEventListener( 'click', function ( event ) {
+
+                    
+                    camera.rotation.x = 90 * Math.phi / 180;
+                    camera.rotation.y = 90 * Math.phi / 180;
+                    camera.rotation.z = 90 * Math.phi / 180;
+                    
+                    
+                    
+                    camera.position.x = 0;
+                    camera.position.y = 0;
+                    camera.position.z = 3000;
+                    
+					transform( targets.sphere, 2000 );
+
+				}, false );
+
+				var button = document.getElementById( 'helix' );
+				button.addEventListener( 'click', function ( event ) {
+                    
+                    camera.position.x = 0;
+                    camera.position.y = 0;
+                    camera.position.z = 3000;
+
+					transform( targets.helix, 2000 );
+
+				}, false );
+
+				var button = document.getElementById( 'grid' );
+				button.addEventListener( 'click', function ( event ) {
+                    
+                    camera.position.x = 0;
+                    camera.position.y = 0;
+                    camera.position.z = 3000;
+
+					transform( targets.grid, 2000 );
+
+				}, false );
+                  /* 
+                var button = document.getElementById( 'column' );
+				button.addEventListener( 'click', function ( event ) {
+                    
+                    camera.position.x = 0;
+                    camera.position.y = 0;
+                    camera.position.z = 3000;
+
+					transform( targets.column, 2000 );
+
+				}, false );
+                
+                  var button = document.getElementById( 'deck' );
+				button.addEventListener( 'click', function ( event ) {
+                    
+                    camera.position.x = 0;
+                    camera.position.y = 0;
+                    camera.position.z = 3000;
+
+					transform( targets.deck, 2000 );
+
+				}, false );
+                
+                 */
+                
+          /*         var button = document.getElementById( 'option' );
+				button.addEventListener( 'mouseenter', function ( event ) {
+                    
+                    transform( targets.table, 2000);
+
+				}, false );
+                
+                var button = document.getElementById( 'option' );
+				button.addEventListener( 'mouseleave', function ( event ) {
+                    
+                    transform( targets.grid, 2000 );
+
+				}, false );
+                
+                var button = document.getElementById( 'pause' );
+				button.addEventListener( 'click', function ( event ) {
+                    
+                   transform(transform( targets.grid, 2000 ), 2000);
+
+				}, false ); */
+
+
+				transform( targets.table, 2000 );
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function transform( targets, duration ) {
+
+				TWEEN.removeAll();
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = objects[ i ];
+					var target = targets[ i ];
+
+					new TWEEN.Tween( object.position )
+						.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+					new TWEEN.Tween( object.rotation )
+						.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+				}
+
+				new TWEEN.Tween( this )
+					.to( {}, duration * 2 )
+					.onUpdate( render )
+					.start();
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				TWEEN.update();
+
+				controls.update();
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+		
+		
+		  <!-- Yandex.Metrika counter -->
+            <script type="text/javascript">
+                (function (d, w, c) {
+                    (w[c] = w[c] || []).push(function() {
+                        try {
+                            w.yaCounter37581270 = new Ya.Metrika({
+                                id:37581270,
+                                clickmap:true,
+                                trackLinks:true,
+                                accurateTrackBounce:true
+                            });
+                        } catch(e) { }
+                    });
+
+                    var n = d.getElementsByTagName("script")[0],
+                        s = d.createElement("script"),
+                        f = function () { n.parentNode.insertBefore(s, n); };
+                    s.type = "text/javascript";
+                    s.async = true;
+                    s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+                    if (w.opera == "[object Opera]") {
+                        d.addEventListener("DOMContentLoaded", f, false);
+                    } else { f(); }
+                })(document, window, "yandex_metrika_callbacks");
+            </script>
+            <noscript><div><img src="https://mc.yandex.ru/watch/37581270" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+            <!-- /Yandex.Metrika counter -->
+    
+	</body>
+</html>
