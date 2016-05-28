@@ -784,10 +784,10 @@
 			var objects = [];
 			var targets = { table: [], sphere: [], helix: [], grid: [] };
 
-			init();
+			init(table); //change table to tablePhone for small number of boxes
 			animate();
 
-			function init() {
+			function init(table) {
                 
                 
                 function addElement() {
