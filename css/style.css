@@ -30,8 +30,7 @@ body {
   box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.5);
   border: 1px solid rgba(127, 255, 255, 0.25);
   text-align: center;
-  cursor: default;
-  line-height: 50px; }
+  cursor: default; }
   .element .number, .service-element .number, .contact-element .number, .about-element .number {
     position: absolute;
     top: 20px;
@@ -59,6 +58,7 @@ body {
     border: 1px solid rgba(127, 255, 255, 0.75); }
 
 .service-element, .contact-element, .about-element {
+  line-height: 50px;
   width: 600px;
   height: 500px; }
   .service-element .details, .contact-element .details, .about-element .details {
