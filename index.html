@@ -572,8 +572,6 @@
             
             var serviceNum = table.length - 5;
             
-            alert(serviceNum);
-            
 			var camera, scene, renderer;
 			var controls;
 
@@ -584,7 +582,45 @@
 			animate();
 
 			function init() {
+                
+                
+                function addElement() {
+                    
+					var number = document.createElement( 'div' );
+					number.className = 'number';
+					number.textContent = (i/5) + 1;
+					element.appendChild( number );
 
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol';
+					symbol.textContent = table[ i ];
+					element.appendChild( symbol );
+
+					var details = document.createElement( 'div' );
+					details.className = 'details';
+					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ] ;
+					element.appendChild( details );
+
+					var object = new THREE.CSS3DObject( element );
+					object.position.x = Math.random() * 4000 - 2000;
+					object.position.y = Math.random() * 4000 - 2000;
+					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
+					object.position.y = - ( table[ i + 4 ] * 180 ) + 800;
+                    object.position.z = 1;
+                    
+					targets.table.push( object );
+                        
+                    
+                }
+                
 				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
 				camera.position.z = 3000;
 
@@ -598,122 +634,29 @@
                         
                     var element = document.createElement( 'div' );
 					element.className = 'contact-element';
-					element.style.backgroundColor = 'rgba(0,15,127,' + 1 + ')';
-
-					var number = document.createElement( 'div' );
-					number.className = 'number';
-					number.textContent = (i/5) + 1;
-					element.appendChild( number );
-
-					var symbol = document.createElement( 'div' );
-					symbol.className = 'symbol';
-					symbol.textContent = table[ i ];
-					element.appendChild( symbol );
-
-					var details = document.createElement( 'div' );
-					details.className = 'details';
-					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ] ;
-					element.appendChild( details );
-
-					var object = new THREE.CSS3DObject( element );
-					object.position.x = Math.random() * 4000 - 2000;
-					object.position.y = Math.random() * 4000 - 2000;
-					object.position.z = Math.random() * 4000 - 2000;
-					scene.add( object );
-
-					objects.push( object );
-
-					//
-
-					var object = new THREE.Object3D();
-					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
-					object.position.y = - ( table[ i + 4 ] * 180 ) + 800;
-                    object.position.z = 1;
-                    
-					targets.table.push( object );
+                    element.style.backgroundColor = 'rgba(0,15,127,' + 0.9 + ')';
                         
+                      addElement();
                     }
                     
                     else if (i == 112*5){   
                         
                     var element = document.createElement( 'div' );
 					element.className = 'about-element';
-					element.style.backgroundColor = 'rgba(0,15,127,' + 1 + ')';
-
-					var number = document.createElement( 'div' );
-					number.className = 'number';
-					number.textContent = (i/5) + 1;
-					element.appendChild( number );
-
-					var symbol = document.createElement( 'div' );
-					symbol.className = 'symbol';
-					symbol.textContent = table[ i ];
-					element.appendChild( symbol );
-
-					var details = document.createElement( 'div' );
-					details.className = 'details';
-					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ] ;
-					element.appendChild( details );
-
-					var object = new THREE.CSS3DObject( element );
-					object.position.x = Math.random() * 4000 - 2000;
-					object.position.y = Math.random() * 4000 - 2000;
-					object.position.z = Math.random() * 4000 - 2000;
-					scene.add( object );
-
-					objects.push( object );
-
-					//
-
-					var object = new THREE.Object3D();
-					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
-					object.position.y = - ( table[ i + 4 ] * 180 ) + 800;
-                    object.position.z = 1;
-                    
-					targets.table.push( object );
+                    element.style.backgroundColor = 'rgba(0,15,127,' + 0.9 + ')';
+                        
+					addElement();
                         
                         
                     }
                     
                     else if (i == serviceNum) {
-                        
-                        alert(i);
-                        
+                     
                     var element = document.createElement( 'div' );
 					element.className = 'service-element';
-					element.style.backgroundColor = 'rgba(0,15,127,' + 1 + ')';
-
-					var number = document.createElement( 'div' );
-					number.className = 'number';
-					number.textContent = (i/5) + 1;
-					element.appendChild( number );
-
-					var symbol = document.createElement( 'div' );
-					symbol.className = 'symbol';
-					symbol.textContent = table[ i ];
-					element.appendChild( symbol );
-
-					var details = document.createElement( 'div' );
-					details.className = 'details';
-					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ] ;
-					element.appendChild( details );
-
-					var object = new THREE.CSS3DObject( element );
-					object.position.x = Math.random() * 4000 - 2000;
-					object.position.y = Math.random() * 4000 - 2000;
-					object.position.z = Math.random() * 4000 - 2000;
-					scene.add( object );
-
-					objects.push( object );
-
-					//
-
-					var object = new THREE.Object3D();
-					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
-					object.position.y = - ( table[ i + 4 ] * 180 ) + 800;
-                    object.position.z = 1000;
-                    
-					targets.table.push( object );
+                    element.style.backgroundColor = 'rgba(0,15,127,' + 0.9 + ')';
+                        
+					addElement();
                         
                     }
                     
@@ -721,254 +664,14 @@
                 
 					var element = document.createElement( 'div' );
 					element.className = 'element';
-					element.style.backgroundColor = 'rgba(0,15,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
-
-					var number = document.createElement( 'div' );
-					number.className = 'number';
-					number.textContent = (i/5) + 1;
-					element.appendChild( number );
-
-					var symbol = document.createElement( 'div' );
-					symbol.className = 'symbol';
-					symbol.textContent = table[ i ];
-					element.appendChild( symbol );
-
-					var details = document.createElement( 'div' );
-					details.className = 'details';
-					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
-					element.appendChild( details );
-
-					var object = new THREE.CSS3DObject( element );
-					object.position.x = Math.random() * 4000 - 2000;
-					object.position.y = Math.random() * 4000 - 2000;
-					object.position.z = Math.random() * 4000 - 2000;
-					scene.add( object );
-
-					objects.push( object );
-
-					//
-
-					var object = new THREE.Object3D();
-					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
-					object.position.y = - ( table[ i + 4 ] * 180 ) + 800;
-                    object.position.z = 1;
-                    
-					targets.table.push( object );
+                    element.style.backgroundColor = 'rgba(0,15,127,' + 0.4 + ')';
+                        
+					addElement();
                         
                     }
 
 				}
                 
-                
-                
-                //55 КОНТАКТЫ
-                
-            /*     var k = 54*5;
-                
-                var element = document.createElement( 'div' );
-					element.className = 'contact-element';
-					element.style.backgroundColor = 'rgba(0,15,127,' + 1 + ')';
-
-					var number = document.createElement( 'div' );
-					number.className = 'number';
-					number.textContent = (k/5) + 1;
-					element.appendChild( number );
-
-					var symbol = document.createElement( 'div' );
-					symbol.className = 'symbol';
-					symbol.textContent = table[ k ];
-					element.appendChild( symbol );
-
-					var details = document.createElement( 'div' );
-					details.className = 'details';
-					details.innerHTML = table[ k + 1 ] + '<br>' + table[ k + 2 ] ;
-					element.appendChild( details );
-
-					var object = new THREE.CSS3DObject( element );
-					object.position.x = Math.random() * 4000 - 2000;
-					object.position.y = Math.random() * 4000 - 2000;
-					object.position.z = Math.random() * 4000 - 2000;
-					scene.add( object );
-
-					objects.push( object );
-
-					//
-
-					var object = new THREE.Object3D();
-					object.position.x = ( table[ k + 3 ] * 140 ) - 1330;
-					object.position.y = - ( table[ k + 4 ] * 180 ) + 800;
-                    object.position.z = 1;
-                    
-					targets.table.push( object );
-                
-              
-                for ( var i = 55*5; i < 112*5; i += 5 ) {
-
-					var element = document.createElement( 'div' );
-					element.className = 'element';
-					element.style.backgroundColor = 'rgba(0,15,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
-
-					var number = document.createElement( 'div' );
-					number.className = 'number';
-					number.textContent = (i/5) + 1;
-					element.appendChild( number );
-
-					var symbol = document.createElement( 'div' );
-					symbol.className = 'symbol';
-					symbol.textContent = table[ i ];
-					element.appendChild( symbol );
-
-					var details = document.createElement( 'div' );
-					details.className = 'details';
-					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
-					element.appendChild( details );
-
-					var object = new THREE.CSS3DObject( element );
-					object.position.x = Math.random() * 4000 - 2000;
-					object.position.y = Math.random() * 4000 - 2000;
-					object.position.z = Math.random() * 4000 - 2000;
-					scene.add( object );
-
-					objects.push( object );
-
-					//
-
-					var object = new THREE.Object3D();
-					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
-					object.position.y = - ( table[ i + 4 ] * 180 ) + 800;
-                    object.position.z = 1;
-                    
-					targets.table.push( object );
-
-				}
-                
-                //112 О НАС 
-                
-                 var k = 112*5;
-                
-                var element = document.createElement( 'div' );
-					element.className = 'about-element';
-					element.style.backgroundColor = 'rgba(0,15,127,' + 1 + ')';
-
-					var number = document.createElement( 'div' );
-					number.className = 'number';
-					number.textContent = (k/5) + 1;
-					element.appendChild( number );
-
-					var symbol = document.createElement( 'div' );
-					symbol.className = 'symbol';
-					symbol.textContent = table[ k ];
-					element.appendChild( symbol );
-
-					var details = document.createElement( 'div' );
-					details.className = 'details';
-					details.innerHTML = table[ k + 1 ] + '<br>' + table[ k + 2 ] ;
-					element.appendChild( details );
-
-					var object = new THREE.CSS3DObject( element );
-					object.position.x = Math.random() * 4000 - 2000;
-					object.position.y = Math.random() * 4000 - 2000;
-					object.position.z = Math.random() * 4000 - 2000;
-					scene.add( object );
-
-					objects.push( object );
-
-					//
-
-					var object = new THREE.Object3D();
-					object.position.x = ( table[ k + 3 ] * 140 ) - 1330;
-					object.position.y = - ( table[ k + 4 ] * 180 ) + 800;
-                    object.position.z = 1;
-                    
-					targets.table.push( object );
-               
-               
-              
-                 for ( var i = 113*5; i < table.length - 5; i += 5 ) {
-
-					var element = document.createElement( 'div' );
-					element.className = 'element';
-					element.style.backgroundColor = 'rgba(0,15,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
-
-					var number = document.createElement( 'div' );
-					number.className = 'number';
-					number.textContent = (i/5) + 1;
-					element.appendChild( number );
-
-					var symbol = document.createElement( 'div' );
-					symbol.className = 'symbol';
-					symbol.textContent = table[ i ];
-					element.appendChild( symbol );
-
-					var details = document.createElement( 'div' );
-					details.className = 'details';
-					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
-					element.appendChild( details );
-
-					var object = new THREE.CSS3DObject( element );
-					object.position.x = Math.random() * 4000 - 2000;
-					object.position.y = Math.random() * 4000 - 2000;
-					object.position.z = Math.random() * 4000 - 2000;
-					scene.add( object );
-
-					objects.push( object );
-
-					//
-
-					var object = new THREE.Object3D();
-					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
-					object.position.y = - ( table[ i + 4 ] * 180 ) + 800;
-                    object.position.z = 1;
-                    
-					targets.table.push( object );
-
-				}
-                
-                // table.length - 5 УСЛУГИ
-                
-                for ( var i = table.length - 5; i < table.length; i += 5 ) {
-                    
-                var k = i;
-                
-                var element = document.createElement( 'div' );
-					element.className = 'service-element';
-					element.style.backgroundColor = 'rgba(0,15,127,' + 1 + ')';
-
-					var number = document.createElement( 'div' );
-					number.className = 'number';
-					number.textContent = (k/5) + 1;
-					element.appendChild( number );
-
-					var symbol = document.createElement( 'div' );
-					symbol.className = 'symbol';
-					symbol.textContent = table[ k ];
-					element.appendChild( symbol );
-
-					var details = document.createElement( 'div' );
-					details.className = 'details';
-					details.innerHTML = table[ k + 1 ] + '<br>' + table[ k + 2 ] ;
-					element.appendChild( details );
-
-					var object = new THREE.CSS3DObject( element );
-					object.position.x = Math.random() * 4000 - 2000;
-					object.position.y = Math.random() * 4000 - 2000;
-					object.position.z = Math.random() * 4000 - 2000;
-					scene.add( object );
-
-					objects.push( object );
-
-					//
-
-					var object = new THREE.Object3D();
-					object.position.x = ( table[ k + 3 ] * 140 ) - 1330;
-					object.position.y = - ( table[ k + 4 ] * 180 ) + 800;
-                    object.position.z = 1000;
-                    
-					targets.table.push( object );
-                
-                }
-                
-                 */
 				// sphere
 
 				var vector = new THREE.Vector3();
