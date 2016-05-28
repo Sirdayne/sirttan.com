@@ -769,14 +769,19 @@
 				"N", "N", "151.964", 22, 5,
 				"N", "N", "157.25", 22, 6,
 				"N", "N", "158.92535", 21, 5,
+                "О НАС", "Компания Sirttan занимается веб-разработкой.", "", 500, 500,
                 "КОНТАКТЫ", "ЗВОНИТЕ +77777700529", "", 500, 500,
-                "УСЛУГИ:", "Информативный сайт от 100.000тнг", "Лэндинг от 100.000тнг", 500, 500,
-                "О НАС", "Компания Sirttan занимается веб-разработкой.", "", 500, 500];
+                "УСЛУГИ:", "Информативный сайт от 100.000тнг", "Лэндинг от 100.000тнг", 500, 500];
+                
             
             
             var aboutNum = 112*5;
             var contactNum = 54*5;
             var serviceNum = table.length - 5;
+            
+            var aboutNum = 65*5;
+            var contactNum = 66*5;
+            var serviceNum = 67*5;
             
 			var camera, scene, renderer;
 			var controls;
@@ -784,9 +789,11 @@
 			var objects = [];
 			var targets = { table: [], sphere: [], helix: [], grid: [] };
 
-			init(table); //change table to tablePhone for small number of boxes
+			init(tablePhone); //change table to tablePhone for small number of boxes
 			animate();
-
+            
+            
+            // DONT CHANGE HERE TABLE MTHFKA
 			function init(table) {
                 
                 
