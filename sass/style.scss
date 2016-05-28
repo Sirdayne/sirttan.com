@@ -46,6 +46,7 @@ body {
     border: 1px solid $opacit-border-color;
     text-align: center;
     cursor: default;
+    line-height: 50px;
         
     .number {
         position: absolute;
@@ -83,35 +84,36 @@ body {
 
 }
             
-        .service-element{
-            @extend .element;
+.service-element{
+    @extend .element;
+    
+    width: 600px;
+    height: 500px;
+    
+    .details {
+        top: 200px;
+        font-size: 30px;      
+    }
+    .symbol {
+        font-size: 50px;
+    }
+}
 
-            width: 600px;
-            height: 500px;
+.contact-element{
+    @extend .service-element;
+    
+    .details {
+        top: 250px;
+    }
+}
 
-            .details {
-                font-size: 30px;      
-            }
-            .symbol {
-                font-size: 50px;
-            }
-        }
+.about-element{
+    @extend .service-element;
 
-        .contact-element{
-            @extend .service-element;
-
-            .details {
-                top: 250px;
-            }
-        }
-
-        .about-element{
-            @extend .service-element;
-
-            .details {
-                top: 200px;
-            }
-        }
+    .details {
+        top: 200px;
+    }
+}
 
 button {
     color: $button-color;
